@@ -1,0 +1,31 @@
+# UTF-8
+VSVersionInfo(
+  ffi=FixedFileInfo(
+    filevers=({FILEVERS}),
+    prodvers=({PRODVERS}),
+    mask=0x3f,
+    flags=0x0,
+    OS=0x4,
+    fileType=0x1,
+    subtype=0x0,
+    date=(0, 0)
+  ),
+  kids=[
+    StringFileInfo([
+      StringTable(
+        '040904B0',
+        [
+          StringStruct('CompanyName', 'Wingflight'),
+          StringStruct('FileDescription', 'Rotorflight to Wingflight'),
+          StringStruct('FileVersion', '{FILEVER_STR}'),
+          StringStruct('InternalName', 'rotorflight-to-wingflight'),
+          StringStruct('LegalCopyright', 'Copyright (C) 2026 Wingflight Project'),
+          StringStruct('OriginalFilename', 'rotorflight-to-wingflight.exe'),
+          StringStruct('ProductName', 'Rotorflight to Wingflight'),
+          StringStruct('ProductVersion', '{PRODVER_STR}')
+        ]
+      )
+    ]),
+    VarFileInfo([VarStruct('Translation', [1033, 1200])])
+  ]
+)

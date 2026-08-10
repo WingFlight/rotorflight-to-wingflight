@@ -1,0 +1,5 @@
+# Requirements for Rotorflight to Wingflight
+# Install with: pip install -r requirements_converter.txt
+
+pyserial>=3.5
+

@@ -1,0 +1,67 @@
+; GD32/AT32 DFU Bootloader WinUSB driver
+;
+; Generic Microsoft WinUSB co-installer INF, structured identically to the
+; official STMicroelectronics STM32Bootloader.inf shipped alongside this file
+; (see ../stm32/STM32Bootloader.inf), retargeted at the GD32/AT32 DFU
+; bootloader USB ID used by some flight controller targets.
+;
+; NOTE: unlike the STM32 package, there is no vendor-supplied, Microsoft-signed
+; catalog file for this device. This INF is intentionally unsigned (no
+; [Version] CatalogFile entry) so driver staging does not fail looking for a
+; missing .cat. Windows may still refuse to install an unsigned driver
+; depending on the machine's Secure Boot / driver-signature-enforcement
+; policy. Treat this as a best-effort install; Zadig remains the fallback.
+
+[Strings]
+DeviceName  = "GD32 DFU Bootloader"
+VendorName  = "GigaDevice/AT32 (generic WinUSB)"
+SourceName  = "DFU Install Disk"
+DeviceID    = "VID_28E9&PID_0189"
+DeviceGUID  = "{BD23036D-0BC0-4AA5-AC7F-A763F9C7D8C3}"
+
+[Version]
+Signature   = "$Windows NT$"
+Class       = USBDevice
+ClassGuid   = {88bae032-5a81-49f0-bc3d-a4ff138216d6}
+Provider    = %VendorName%
+DriverVer   = 08/04/2026,1.0.0.0
+PnpLockdown = 1
+
+[Manufacturer]
+%VendorName% = libusbDevice_WinUSB,NTx86,NTamd64
+
+[libusbDevice_WinUSB.NTx86]
+%DeviceName% = USB_Install, USB\%DeviceID%
+
+[libusbDevice_WinUSB.NTamd64]
+%DeviceName% = USB_Install, USB\%DeviceID%
+
+[USB_Install]
+Include = winusb.inf
+Needs   = WINUSB.NT
+AddReg  = SetFriendlyName
+
+[USB_Install.Services]
+Include = winusb.inf
+Needs   = WINUSB.NT.Services
+
+[USB_Install.Wdf]
+KmdfService = WINUSB, WinUsb_Install
+
+[WinUSB_Install]
+KmdfLibraryVersion = 1.9
+
+[USB_Install.HW]
+AddReg = AddDeviceInterfaceGUID, SetInterfaceFriendlyName
+
+[AddDeviceInterfaceGUID]
+HKR,,DeviceInterfaceGUIDs,0x10000,%DeviceGUID%
+
+[SetFriendlyName]
+HKR,,FriendlyName,0x00000000,"%DeviceName%"
+
+[SetInterfaceFriendlyName]
+HKR,,FriendlyName,0x00000000,"%DeviceName%"
+
+[SourceDisksNames]
+1 = %SourceName%

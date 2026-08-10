@@ -1,0 +1,71 @@
+name: Converter Push Build
+
+on:
+  push:
+    branches:
+      - 'main'
+      - 'master'
+      - 'WF-*'
+
+jobs:
+  build-converter:
+    name: Build Push (windows-${{ matrix.arch }})
+    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - arch: x64
+            py_arch: x64
+          - arch: x86
+            py_arch: x86
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set build variables
+        shell: bash
+        run: |
+          SHORT_SHA="${GITHUB_SHA::7}"
+          echo "GIT_VER=commit-${SHORT_SHA}" >> $GITHUB_ENV
+          echo "ARCH_NAME=${{ matrix.arch }}" >> $GITHUB_ENV
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          architecture: ${{ matrix.py_arch }}
+          cache: 'pip'
+          cache-dependency-path: src/requirements_converter.txt
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r src/requirements_converter.txt pyinstaller
+
+      - name: Generate version info
+        run: python src/gen_version_info.py
+        env:
+          CONVERTER_VERSION: ${{ env.GIT_VER }}
+
+      - name: Build converter
+        working-directory: src
+        run: |
+          python -m PyInstaller --onefile --noupx converter_gui.py --name rotorflight-to-wingflight --windowed --uac-admin --version-file version_info.txt --icon icon.ico --add-data "drivers;drivers" --add-data "tools;tools" --add-data "logo.png;."
+
+      - name: Package converter
+        shell: pwsh
+        run: |
+          $artName = "rotorflight-to-wingflight-$env:GIT_VER-windows-$env:ARCH_NAME.zip"
+          $artPath = "dist\$artName"
+          New-Item -ItemType Directory -Path dist -Force | Out-Null
+          Compress-Archive -Path "src\dist\rotorflight-to-wingflight.exe" -DestinationPath $artPath -Force
+          "ART_NAME=$artName" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+          "ART_PATH=$artPath" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+
+      - name: Upload converter artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.ART_NAME }}
+          path: ${{ env.ART_PATH }}
+          if-no-files-found: error
