@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1296" height="1029" viewBox="0 0 1296 1029" role="img" aria-labelledby="title desc">
+  <title id="title">Rotorflight to Wingflight app screenshot</title>
+  <desc id="desc">The Rotorflight to Wingflight Windows app showing the converter window, DFU driver warning, device table, primary convert button, and log output.</desc>
+  <defs>
+    <style>
+      .ui { font-family: "Segoe UI", Arial, sans-serif; }
+      .mono { font-family: Consolas, "Courier New", monospace; }
+      .shadow { filter: drop-shadow(0 2px 8px rgba(0,0,0,.25)); }
+    </style>
+  </defs>
+
+  <rect width="1296" height="1029" fill="#0c0c0c"/>
+  <g class="shadow">
+    <rect x="3" y="3" width="1290" height="1023" rx="10" fill="#f1f1f1" stroke="#5c4b4b" stroke-width="2"/>
+
+    <rect x="4" y="4" width="1288" height="45" rx="8" fill="#faf7f8"/>
+    <rect x="4" y="39" width="1288" height="10" fill="#faf7f8"/>
+    <circle cx="25" cy="25" r="12" fill="#eef7f0" stroke="#9a9a9a"/>
+    <path d="M17 30 L22 17 L28 30 Z" fill="none" stroke="#e10d16" stroke-width="3"/>
+    <path d="M28 30 L34 22" stroke="#3aa656" stroke-width="3"/>
+    <text class="ui" x="49" y="31" font-size="19" fill="#1a1a1a">Rotorflight to Wingflight</text>
+    <text class="ui" x="1120" y="29" font-size="20" fill="#222">-</text>
+    <rect x="1180" y="18" width="14" height="14" fill="none" stroke="#aaa"/>
+    <rect x="1224" y="4" width="66" height="45" fill="#f6e8eb"/>
+    <path d="M1251 18 L1265 32 M1265 18 L1251 32" stroke="#111" stroke-width="2"/>
+
+    <rect x="4" y="49" width="1288" height="124" fill="#1f1f1f"/>
+    <text class="ui" x="27" y="103" font-size="33" font-weight="700" fill="#ffffff">Rotorflight to Wingflight</text>
+    <text class="ui" x="27" y="142" font-size="21" fill="#ffffff">Detect board, fetch matching Wingflight firmware, fix DFU driver, flash</text>
+    <g transform="translate(1058 66)">
+      <path d="M4 67 L86 22 L116 0 L90 72 L175 72" fill="none" stroke="#e30000" stroke-width="9"/>
+      <path d="M14 50 L35 87" stroke="#e30000" stroke-width="7"/>
+      <text class="ui" x="118" y="91" font-size="63" font-weight="800" fill="#e30000">WF</text>
+      <path d="M185 29 L229 24 L225 39 L181 44 Z" fill="#5d5d5d"/>
+    </g>
+
+    <rect x="4" y="173" width="1288" height="42" fill="#704a00"/>
+    <text class="ui" x="303" y="201" font-size="19" font-weight="700" fill="#ffd05f">Not running as Administrator - DFU driver installation will fail. Re-launch as admin.</text>
+
+    <rect x="18" y="231" width="1260" height="278" fill="#fff" stroke="#99a0a8" stroke-width="2"/>
+    <line x1="195" y1="231" x2="195" y2="269" stroke="#ddd"/>
+    <line x1="699" y1="231" x2="699" y2="269" stroke="#ddd"/>
+    <line x1="846" y1="231" x2="846" y2="269" stroke="#ddd"/>
+    <text class="ui" x="91" y="257" font-size="18" font-weight="600" fill="#111">Port</text>
+    <text class="ui" x="390" y="257" font-size="18" font-weight="600" fill="#111">Board / Device</text>
+    <text class="ui" x="744" y="257" font-size="18" font-weight="600" fill="#111">VID:PID</text>
+    <text class="ui" x="1041" y="257" font-size="18" font-weight="600" fill="#111">Status</text>
+
+    <rect x="440" y="546" width="416" height="65" rx="4" fill="#fff" stroke="#d0d0d0" stroke-width="2"/>
+    <text class="ui" x="520" y="585" font-size="26" font-weight="700" fill="#050505">Convert to Wingflight</text>
+
+    <rect x="20" y="622" width="110" height="33" rx="5" fill="#fff" stroke="#d7d7d7"/>
+    <text class="ui" x="48" y="645" font-size="18" fill="#111">Refresh</text>
+    <rect x="1162" y="622" width="116" height="33" rx="5" fill="#fff" stroke="#d7d7d7"/>
+    <text class="ui" x="1170" y="645" font-size="18" fill="#111">Open GitHub</text>
+
+    <rect x="19" y="672" width="1238" height="337" fill="#fff" stroke="#d8d8d8"/>
+    <rect x="1258" y="672" width="20" height="337" fill="#f7f7f7"/>
+    <path d="M1268 681 L1274 690 L1262 690 Z" fill="#aaa"/>
+    <path d="M1262 997 L1274 997 L1268 1006 Z" fill="#aaa"/>
+    <text class="mono" x="22" y="693" font-size="20" fill="#111">Scanning USB and MSP devices...</text>
+    <text class="mono" x="22" y="718" font-size="20" fill="#111">Scan complete: 0 candidate device(s) found.</text>
+  </g>
+</svg>
+

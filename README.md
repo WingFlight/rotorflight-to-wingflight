@@ -3,6 +3,8 @@
 A small Windows Python app for helping users convert a Rotorflight flight
 controller to Wingflight with one main action.
 
+![Rotorflight to Wingflight app screenshot](docs/app-screenshot.svg)
+
 The intended flow is:
 
 1. Detect a connected MSP flight controller and read its board information.
